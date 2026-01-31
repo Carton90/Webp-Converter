@@ -1,0 +1,11 @@
+Paso 0: Requisito Único Esa persona sí o sí necesita tener Python instalado.
+
+Tip: Si no lo tiene, dile que lo baje de la Microsoft Store (es más fácil para novatos) o de python.org, pero ES CRUCIAL que marque la casilla "Add Python to PATH" durante la instalación. Sin eso, el .bat no funciona.
+
+Paso 1: Configuración (Solo una vez)
+
+"Haz doble clic en instalar_todo.bat. Si sale letras verdes, está listo."
+
+Paso 2: Uso diario
+
+"Haz doble clic en iniciar_programa.bat. Se abrirá el menú y solo sigue las instrucciones."

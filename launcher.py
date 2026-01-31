@@ -10,6 +10,8 @@ try:
     import optimizar_web as optimizar
     import marca_agua
     import renombrar
+    import generar_qr
+    import generar_sku
 except ImportError as e:
     print(f"❌ Error: Faltan scripts en la carpeta.")
     print(f"Detalles: {e}")
@@ -28,6 +30,8 @@ def mostrar_menu():
     print("3. 🚀 Optimizar para Web (WebP + Compresión)")
     print("4. ©  Aplicar Marca de Agua")
     print("5. 🏷️  Renombrar Secuencialmente")
+    print("6. 📦 Generar SKUs (Códigos de producto)")
+    print("7. 📱 Generar Código QR")
     print("----------------------------------------")
     print("0. Salir")
     print("========================================")
@@ -35,7 +39,7 @@ def mostrar_menu():
 def main():
     while True:
         mostrar_menu()
-        opcion = input("Selecciona una opción (0-5): ")
+        opcion = input("Selecciona una opción (0-7): ")
 
         if opcion == '0':
             print("👋 Saliendo... ¡Hasta luego!")
@@ -111,6 +115,31 @@ def main():
             else:
                 print("❌ Carpeta inválida.")
             input("\nPresiona Enter para volver al menú...")
+
+        # CASO 6: SKU
+        elif opcion == '6':
+            print("\n--- GENERADOR DE SKU ---")
+            cat = input("Categoría (ej: Pantalon): ")
+            col = input("Color (ej: Negro): ")
+            tal = input("Talle (ej: M): ")
+
+            try:
+                cant = int(input("Cantidad a generar: "))
+                print("\nCOPIÁ ESTOS CÓDIGOS:")
+                for i in range(cant):
+                    sku = generar_sku.generar_sku_inteligente(cat,col,tal, i+1)
+                    print(f"👉 {sku}")
+            except ValueError:
+                print("Error en los datos.")
+            input("\nEnter para volver...")
+
+        # CASO 7: QR
+        elif opcion == '7':
+            print("\n--- GENERADOR DE QR ---")
+            data = input ("URL o Texto para el QR: ")
+            nombre = input ("Nombre del archivo (sin extensión):")
+            generar_qr.crear_qr(data, nombre)
+            input("\nEnter para volver...")
 
         else:
             print("❌ Opción no válida.")
